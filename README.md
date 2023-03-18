@@ -1,3 +1,3 @@
 # Demo
 
-A Flutter project.
+A Flutter project for testing purposes.
