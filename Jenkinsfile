@@ -1,31 +1,23 @@
 pipeline {
     agent any
 
-    environment {
-        FLUTTER_HOME = tool 'flutter'
-    }
-
     stages {
-        stage('Checkout') {
+        stage('GIT PULL') {
             steps {
-                checkout scm
+                git branch: "develop", url: 'https://github.com/prithvirajpowar/Demo.git'
             }
         }
-        stage('Setup') {
+        stage('TEST') {
             steps {
-                sh "${FLUTTER_HOME}/bin/flutter config --no-analytics"
-                sh "${FLUTTER_HOME}/bin/flutter doctor -v"
+                sh 'flutter test'
             }
         }
-        stage('Build') {
+        stage('BUILD') {
             steps {
-                sh "${FLUTTER_HOME}/bin/flutter pub get"
-                sh "${FLUTTER_HOME}/bin/flutter build apk --split-per-abi"
-            }
-        }
-        stage('Test') {
-            steps {
-                sh "${FLUTTER_HOME}/bin/flutter test"
+                sh '''
+                  #!/bin/sh
+                  flutter build apk --debug
+                  '''
             }
         }
     }
