@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('GIT PULL') {
             steps {
-                git branch: "develop", url: 'https://github.com/prithvirajpowar/Demo.git'
+                git branch: "master", url: 'https://github.com/prithvirajpowar/Demo.git'
             }
         }
         stage('TEST') {
