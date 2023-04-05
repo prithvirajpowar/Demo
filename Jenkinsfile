@@ -1,17 +1,23 @@
 pipeline {
     agent any
-    tools {
-        flutter 'flutter'
-    }
+    
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/your-username/your-flutter-app.git'
+                git 'https://github.com/prithvirajpowar/Demo.git'
             }
         }
-        stage('Build APK') {
+        
+        stage('Build') {
             steps {
+                sh 'flutter pub get'
                 sh 'flutter build apk'
+            }
+        }
+        
+        stage('Archive APK') {
+            steps {
+                archiveArtifacts artifacts: 'build/app/outputs/apk/release/app-release.apk', fingerprint: true
             }
         }
     }
