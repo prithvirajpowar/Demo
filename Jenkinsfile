@@ -4,20 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/prithvirajpowar/Demo.git'
+                git 'https://github.com/prithvirajpowar/flutter-project.git'
             }
         }
         
         stage('Build') {
             steps {
-                sh 'flutter pub get'
+                sh 'flutter packages get'
                 sh 'flutter build apk'
-            }
-        }
-        
-        stage('Archive APK') {
-            steps {
-                archiveArtifacts artifacts: 'build/app/outputs/apk/release/app-release.apk', fingerprint: true
             }
         }
     }
