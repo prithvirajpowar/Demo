@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'flutter packages get'
-                sh 'flutter build apk'
+                sh 'flutter build apk --licenses'
             }
         }
     }
