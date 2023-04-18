@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/prithvirajpowar/flutter-project.git'
+                git 'https://github.com/prithvirajpowar/Demo.git'
             }
         }
         
